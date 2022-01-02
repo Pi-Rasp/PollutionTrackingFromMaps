@@ -1,0 +1,30 @@
+SU: Current Average Speed
+FF: Free Flow Speed
+RWS: A list of Roadways
+RW: Single RoadWay
+FIS: List of Flow Item Elements
+FI: Single Flow Item
+DE: Text Description of the Road
+QD = Queuing direction. '+' or '-'. Note this is the opposite of the travel direction in the fully qualified ID, For example for location 107+03021 the QD would be '-'
+LE = Length of the stretch of road. The units are defined in the file header
+CF = Current Flow. This element contains details about speed and Jam Factor information for the given flow item.
+CN = Confidence, an indication of how the speed was determined. -1.0 road closed. 1.0=100% 0.7-100% Historical Usually a value between .7 and 1.0 "FF" = The free flow speed on this
+stretch of road.
+JF = The number between 0.0 and 10.0 indicating the expected quality of travel. When there is a road closure, the Jam Factor will be 10. As the number approaches 10.0 the quality of travel is getting worse. -1.0 indicates that a Jam Factor could not be calculated
+SP = Speed (based on UNITS) capped by speed limit
+SU = Speed (based on UNITS) not capped by speed limit
+TY = Type information for the given Location Referencing container. This may be freely defined string
+
+
+
+By default, the service uses specific color mappings that match a traffic scale measured in Jam Factors,
+where 0 means "free flowing" and 10 means "completely obstructed".
+The following table describes the overlay colors, which follow a standard configuration to map Jam Factors to color.
+
+https://developer.here.com/documentation/traffic/dev_guide/topics/tiles.html
+Traffic Flow to Color Mapping
+Color	Description
+Green	Free flow of traffic: 0 <= JAM_FACTOR < 4
+Yellow	Sluggish flow of traffic: 4 <= JAM_FACTOR < 8
+Red	Slow flow of traffic: 8 <= JAM_FACTOR < 10
+Black	Traffic stopped flowing or road closed: JAM_FACTOR = 10

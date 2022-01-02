@@ -1,0 +1,32 @@
+{
+  "Biodiversity Park Junction": {
+    "Channel ID": "1268492",
+    "API_Key": "EEKPJATLWL59XNN2",
+    "Latitude": "17.4287",
+    "Longitude": "78.3746"
+  },
+  "Botanical Garden Junction": {
+    "Channel ID": "1310984",
+    "API_Key": "92WJ4GLX4RQEYITC",
+    "Latitude": "17.4555",
+    "Longitude": "78.364"
+  },
+  "Gachibowli Flyover": {
+    "Channel ID": "1290822",
+    "API_Key": "2K4M84VY3E6RGVQK",
+    "Latitude": "17.4384",
+    "Longitude": "78.3639"
+  },
+  "IIITH DLF Junction": {
+    "Channel ID": "1310981",
+    "API_Key": "5JWYWU5QR9N4VN94",
+    "Latitude": "17.4448",
+    "Longitude": "78.3529"
+  },
+  "Masjid Banda Circle": {
+    "Channel ID": "1310982",
+    "API_Key": "F8JV9O1T3HNEMYLN",
+    "Latitude": "17.4656",
+    "Longitude": "78.3418"
+  }
+}
