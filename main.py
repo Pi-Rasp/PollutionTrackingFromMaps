@@ -103,35 +103,53 @@ def get_maps_data_threaded():
 
 if __name__ == '__main__':
     nodes = json.load(open('NodeDetails.json', 'r'))
+
+    # Create variable for all nodes
+
+    biodiversity_park_junction = Node(nodes["Biodiversity Park Junction"], 'biodiversity')
+    botanical_garden_junction = Node(nodes["Botanical Garden Junction"], 'botanical')
+    gachibowli_flyover = Node(nodes["Gachibowli Flyover"], 'gachifloyover')
+    iiit_dlf_node = Node(nodes["IIITH DLF Junction"], 'iiitdlf')
     masjid_banda_node = Node(nodes["Masjid Banda Circle"], 'masjidbanda')
+    uoh_small_gate = Node(nodes["UoH Small Gate"], 'uohgate')
+    prime_splendour = Node(nodes["Prime Splendour Masjid Banda Road"], 'primesplendour')
+    vijaya_diag_bot_garden = Node(nodes["Vijaya Diagnostics Botanical Garden"], 'vijayadiag')
+    decathlon_gachibowli = Node(nodes["Decathlon Gachibowli"], 'decathlon_gachi')
+    indira_nagar = Node(nodes["Indira Nagar"], 'indiranagar')
+
     # masjid_banda_node.get_node_data(start_date='2021-12-25', end_date='2021-12-25',
     #                                 start_time='09:00:00', end_time='17:00:00')
-    iiit_dlf_node = Node(nodes["IIITH DLF Junction"], 'iiitdlf')
 
     data_collection_start_time = datetime.time(8, 0, 0, 0)
     data_collection_stop_time = datetime.time(21, 0, 0, 0)
 
-    node_objects = [masjid_banda_node, iiit_dlf_node]
+    node_objects = [biodiversity_park_junction, botanical_garden_junction, masjid_banda_node, iiit_dlf_node,
+                    gachibowli_flyover, uoh_small_gate, prime_splendour, vijaya_diag_bot_garden,
+                    decathlon_gachibowli, indira_nagar]
     que = queue.Queue(maxsize=len(node_objects))
 
-    while True:
-        now = datetime.datetime.now().time()
-        for node_object in node_objects:
-            if data_collection_start_time <= now <= data_collection_stop_time:
-                print("Data storage is starting")
-                if node_object.map_data_csv.closed:
-                    node_object.map_data_csv = open(os.path.join(node_object.map_data_dir, 'data.csv'), 'a')
-
-            elif not node_object.map_data_csv.closed:
-                node_object.map_data_csv.close()
-                print("Data is stored for", datetime.datetime.now().strftime("%D"))
-
-        while data_collection_start_time <= now <= data_collection_stop_time:
-            threading.Thread(target=get_maps_data_threaded, daemon=True).start()
-            for node_object in node_objects:
-                que.put(node_object.get_maps_data)
-            que.join()
-            time.sleep(30)
+    try:
+        while True:
             now = datetime.datetime.now().time()
+            for node_object in node_objects:
+                if data_collection_start_time <= now <= data_collection_stop_time:
+                    print("Data storage is starting")
+                    if node_object.map_data_csv.closed:
+                        node_object.map_data_csv = open(os.path.join(node_object.map_data_dir, 'data.csv'), 'a')
+
+                elif not node_object.map_data_csv.closed:
+                    node_object.map_data_csv.close()
+                    print("Data is stored for", datetime.datetime.now().strftime("%D"))
+
+            while data_collection_start_time <= now <= data_collection_stop_time:
+                threading.Thread(target=get_maps_data_threaded, daemon=True).start()
+                for node_object in node_objects:
+                    que.put(node_object.get_maps_data)
+                que.join()
+                time.sleep(5)
+                now = datetime.datetime.now().time()
+    except KeyboardInterrupt:
+        for node_object in node_objects:
+            node_object.map_data_csv.close()
 
 

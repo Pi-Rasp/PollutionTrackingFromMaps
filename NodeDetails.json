@@ -28,5 +28,35 @@
     "API_Key": "F8JV9O1T3HNEMYLN",
     "Latitude": "17.4656",
     "Longitude": "78.3418"
+  },
+  "UoH Small Gate": {
+    "Channel ID": "1259401",
+    "API_Key": "64QY0FW1L0BPW5EO",
+    "Latitude": "17.45688",
+    "Longitude": "78.33975"
+  },
+  "Prime Splendour Masjid Banda Road": {
+    "Channel ID": "1310980",
+    "API_Key": "O3SFRELJP5NLDURK",
+    "Latitude": "17.46349",
+    "Longitude": "78.34721"
+  },
+  "Vijaya Diagnostics Botanical Garden": {
+    "Channel ID": "1310983",
+    "API_Key": "PJ6M2QNOH4WDYIAH",
+    "Latitude": "17.46031",
+    "Longitude": "78.35439"
+  },
+  "Decathlon Gachibowli": {
+    "Channel ID": "1259402",
+    "API_Key": "99TUCQZE972MXGZU",
+    "Latitude": "17.44683",
+    "Longitude": "78.36347"
+  },
+  "Indira Nagar": {
+    "Channel ID": "1259404",
+    "API_Key": "JGU270DVZSY9UGLU",
+    "Latitude": "17.441533",
+    "Longitude": "78.359292"
   }
 }
